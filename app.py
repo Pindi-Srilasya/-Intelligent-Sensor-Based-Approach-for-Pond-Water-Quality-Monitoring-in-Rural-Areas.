@@ -55,6 +55,8 @@ def get_float(data, *keys, default=0.0):
 def predict_quality():
     try:
         data = request.get_json()
+        if not data:
+            return jsonify({"error": "No input data provided"}), 400
 
         tds = get_float(data, "TDS", "tds")
         turb = get_float(data, "Turbidity", "turbidity")
