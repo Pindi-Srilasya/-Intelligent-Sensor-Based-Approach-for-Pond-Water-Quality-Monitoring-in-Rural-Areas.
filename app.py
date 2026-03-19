@@ -58,6 +58,9 @@ def predict_quality():
 
         tds = get_float(data, "TDS", "tds")
         turb = get_float(data, "Turbidity", "turbidity")
+        # Input validation
+        if tds <= 0 or turb < 0:
+            return jsonify({"error": "Invalid input values"}), 400
 
         X = pd.DataFrame([[tds, turb]], columns=["TDS", "Turbidity"])
 
