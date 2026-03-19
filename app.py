@@ -163,6 +163,20 @@ def predict_future_quality():
 def healthcheck():
     return jsonify({"status": "OK"})
 
+# ============================================================
+# MODEL INFO ENDPOINT
+# ============================================================
+@app.route("/model_info", methods=["GET"])
+def model_info():
+    return jsonify({
+        "models": ["Random Forest", "LSTM"],
+        "features": ["TDS", "Turbidity"],
+        "capabilities": [
+            "Water quality classification",
+            "Future prediction (time series)"
+        ]
+    })
+    
 
 # ============================================================
 # RUN SERVER
